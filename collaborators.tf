@@ -16,7 +16,7 @@ data "http" "comments" {
 resource "value_unknown_proposer" "default" {}
 resource "value_is_known" "collaborators" {
   value            = local.collaborators
-  guid_seed        = var.name
+  guid_seed        = var.repository
   proposed_unknown = value_unknown_proposer.default.value
 }
 
