@@ -4,17 +4,21 @@ Create a repository to be used by students in a training environment.
 
 ## Auth
 
-The vast majority is created using the [`integrations/github`](https://registry.terraform.io/providers/integrations/github/) provider which
-taps into [`gh cli`](https://cli.github.com/) for authentication. Only there's currently a bug in the
-`github_rest_api` data source which makes it impossible to read the commenters from the created issue. Therefor you now also need to set
-the `GITHUB_TOKEN` environment variable.
+All resources are created using the  [`integrations/github`](https://registry.terraform.io/providers/integrations/github/) provider which
+taps into [`gh cli`](https://cli.github.com/) for authentication.
+
+To successfully destroy all resources when done you'll need the additional `delete_repo` scope:
+
+```bash
+gh auth login --scopes delete_repo
+```
 
 ## Setup
 
 ```terraform
 module "repository" {
   source     = "riezebosch/training-repository/github"
-  version    = "0.0.6"
+  version    = "0.0.7"
   repository = "temp"
   template = {
     owner      = "proscrumdev"
