@@ -10,3 +10,11 @@ variable "template" {
   })
   description = "configuration for the template repository"
 }
+
+variable "issues" {
+  type = list(object({
+    title = string
+    body  = string
+  }))
+  default = []
+}

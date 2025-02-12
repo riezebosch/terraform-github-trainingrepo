@@ -24,6 +24,11 @@ module "repository" {
     owner      = "proscrumdev"
     repository = "battleship-dotnet"
   }
+  issues = [{
+    title = ""
+    body = <<EOT
+    EOT
+  }]
 }
 ```
 
